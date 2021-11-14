@@ -15,13 +15,14 @@ class ArtistasProvider{
     
     for (var i = 0; i < 10; i++) {
       Artista artista = Artista(
-        estado: true,
-        imagenDeFondo: arreglosData.rutasImagenesPortrait[i],
+        estado: arreglosData.estadosArtistas[i],
+        imagenPortrait: arreglosData.rutasImagenesPortrait[i],
+        imagenLandscape: arreglosData.rutasImagenesLandscape[i],
         id: i+1,
         nombre: arreglosData.nombresArtistas[i],
-        generoMusical: 'Genero',
-        paisOrigen: 'País',
-        descripcion: 'Descripción'
+        generoMusical: arreglosData.generosArtistas[i],
+        paisOrigen: arreglosData.paisOrigenArtistas[i],
+        descripcionBiografica: arreglosData.descripcionBiograficaArtistas[i]
       );
       _artistas.add(artista);
     }

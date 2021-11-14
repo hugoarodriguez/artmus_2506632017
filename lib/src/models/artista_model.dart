@@ -19,49 +19,52 @@ class Artista {
 
   String uniqueId = "0";//Propiedad inventada para diferenciar ID para uso del Hero Animation
 
-  bool estado = true;
-  String imagenDeFondo = 'ruta';
+  String estado = 'Activo';
+  String imagenPortrait = 'ruta';
+  String imagenLandscape = 'ruta';
   int id = 0;
   String nombre = 'Nombre';
   String generoMusical = 'Genero';
   String paisOrigen = 'País origen';
-  String descripcion = 'Descropción';
+  String descripcionBiografica = 'Descripción';
 
   Artista({
     required this.estado,
-    required this.imagenDeFondo,
+    required this.imagenPortrait,
+    required this.imagenLandscape,
     required this.id,
     required this.nombre,
     required this.generoMusical,
     required this.paisOrigen,
-    required this.descripcion,
+    required this.descripcionBiografica,
   });
 
   Artista.fromJsonMap(Map<String, dynamic> json){
-    estado             = json["adult"] ?? true;
-    imagenDeFondo      = json["backdrop_path"] ?? '';
+    estado             = json["estado"] ?? '';
+    imagenPortrait      = json["imagenPortrait"] ?? '';
+    imagenLandscape      = json["imagenLandscape"] ?? '';
     id                = json["id"] ?? 0;
-    nombre  = json["original_language"] ?? '';
-    generoMusical     = json["original_title"] ?? '';
-    paisOrigen          = json["overview"] ?? '';
-    descripcion          = json["descripcion"] ?? '';
+    nombre  = json["nombre"] ?? '';
+    generoMusical     = json["generoMusical"] ?? '';
+    paisOrigen          = json["paisOrigen"] ?? '';
+    descripcionBiografica          = json["descripcionBiografica"] ?? '';
   }
 
   getPosterImg(){
 
-    if(imagenDeFondo == null){
+    if(imagenPortrait == null){
       return 'https://i.stack.imgur.com/y9DpT.jpg';
     }else{
-      return imagenDeFondo;
+      return imagenPortrait;
     }
   }
 
   getBackgroundImg(){
 
-    if(imagenDeFondo == null){
+    if(imagenLandscape == null){
       return 'https://i.stack.imgur.com/y9DpT.jpg';
     }else{
-      return imagenDeFondo;
+      return imagenLandscape;
     }
   }
   
