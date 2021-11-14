@@ -8,11 +8,10 @@ class ArtistasProvider{
   bool _cargando = false;
 
   final List<Artista> _artistas = [];
+  ArreglosData arreglosData = ArreglosData();
 
   List<Artista> _procesarRespuesta(){
 
-    ArreglosData arreglosData = ArreglosData();
-    
     for (var i = 0; i < 10; i++) {
       Artista artista = Artista(
         estado: arreglosData.estadosArtistas[i],
@@ -37,7 +36,27 @@ class ArtistasProvider{
   }
 
    Future<List<Artista>> buscarArtista(String query) async {
+    List<Artista> artistasEncontrados = [];
+     
+    for (var i = 0; i < 10; i++) {
+      Artista artista = Artista(
+        estado: arreglosData.estadosArtistas[i],
+        imagenPortrait: arreglosData.rutasImagenesPortrait[i],
+        imagenLandscape: arreglosData.rutasImagenesLandscape[i],
+        id: i+1,
+        nombre: arreglosData.nombresArtistas[i],
+        generoMusical: arreglosData.generosArtistas[i],
+        paisOrigen: arreglosData.paisOrigenArtistas[i],
+        descripcionBiografica: arreglosData.descripcionBiograficaArtistas[i]
+      );
+      artistasEncontrados.add(artista);
+    }
+     
 
-    return _procesarRespuesta();
+    artistasEncontrados = query.isEmpty
+      ? []
+      : artistasEncontrados.where((p) => p.nombre.toLowerCase().contains(query.toLowerCase())).toList();
+
+    return artistasEncontrados;
   }
 }

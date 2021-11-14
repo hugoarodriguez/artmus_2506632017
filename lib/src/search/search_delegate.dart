@@ -5,29 +5,12 @@ import 'package:artmus_2506632017/src/providers/artistas_provider.dart';
 
 class DataSearch extends SearchDelegate{
 
+  @override
   String get searchFieldLabel => 'Búscar...';
 
   String seleccion = '';
   final artistasProvider = ArtistasProvider();
-  //Pelicula _miPelicula;
 
-  final artistas = [
-    'Megadeth',
-    'Metallica',
-    'Iron Maiden',
-    'Slayer',
-    'Anthrax',
-    'Pantera',
-    'Ozzy Osbourne',
-    'Sacred Reich',
-    'Kreator',
-    'Sodom',
-  ];
-
-  final artistasRecientes = [
-    'Megadeth',
-    'Pantera',
-  ];
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -74,8 +57,16 @@ class DataSearch extends SearchDelegate{
     @override
     Widget buildSuggestions(BuildContext context) {
     // Son las sugerencias que aparecen cuando la persona escribe
+
+    List<Artista>? artistas;
     
-    if(query.isEmpty) return Container();
+    if(query.isEmpty){
+      if(artistas != null){
+        artistas.clear();
+      }
+      
+      return Container();
+    }
 
     return FutureBuilder(
       future: artistasProvider.buscarArtista(query),
@@ -83,7 +74,7 @@ class DataSearch extends SearchDelegate{
 
         if(snapshot.hasData){
 
-          final artistas = snapshot.data;
+          artistas = snapshot.data;
 
           return ListView(
             children: artistas!.map((artista){
