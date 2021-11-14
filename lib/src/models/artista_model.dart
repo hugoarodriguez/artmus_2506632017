@@ -9,8 +9,8 @@ class Artistas{
     if(jsonList == null) return;
 
     for(var item in jsonList){
-      final pelicula = Artista.fromJsonMap(item);
-      items.add(pelicula);
+      final artista = Artista.fromJsonMap(item);
+      items.add(artista);
     }
   }
 }

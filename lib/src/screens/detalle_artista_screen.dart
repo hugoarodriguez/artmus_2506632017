@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,7 @@ class DetalleArtistaScreen extends StatelessWidget {
                   SizedBox(height: 10.0),
                   _posterTitulo(context, artista),
                   _descripcionArtista(artista),
-                  //_crearCasting(artista)
+                  _crearDiscografia(artista)
                 ]
               )
             )
@@ -109,17 +109,17 @@ class DetalleArtistaScreen extends StatelessWidget {
 
   }
 
-  /*
+  
 
-  Widget _crearCasting(Pelicula pelicula){
+  Widget _crearDiscografia(artista){
 
-    final peliculasProvider = PeliculasProvider();
+    final artistasProvider = ArtistasProvider();
 
     return FutureBuilder(
-      future: peliculasProvider.getCast(pelicula.id.toString()),
+      future: artistasProvider.getAlbums(artista.id),
       builder: (context, AsyncSnapshot<List> snapshot) {
         if(snapshot.hasData){
-          return _crearActoresPageView(snapshot.data);
+          return _crearAlbumsPageView(snapshot.data);
         }else{
           return Center(child: CircularProgressIndicator());
         }
@@ -127,7 +127,7 @@ class DetalleArtistaScreen extends StatelessWidget {
     );
   }
 
-  Widget _crearActoresPageView(List<Actor> actores){
+  Widget _crearAlbumsPageView(albums){
 
     return SizedBox(
       height: 200.0,
@@ -137,13 +137,13 @@ class DetalleArtistaScreen extends StatelessWidget {
           viewportFraction: 0.3,
           initialPage: 1
         ),
-        itemCount: actores.length,
-        itemBuilder: (context, i) => _actorTarjeta(actores[i]),
+        itemCount: albums.length,
+        itemBuilder: (context, i) => _albumTarjeta(albums[i]),
       )
     ); 
   }
 
-  Widget _actorTarjeta(Actor actor){
+  Widget _albumTarjeta(album){
     
     return Container(
       child: Column(
@@ -151,7 +151,7 @@ class DetalleArtistaScreen extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
             child: FadeInImage(
-              image: AssetImage(actor.getFoto()),
+              image: AssetImage(album.getPosterImg()),
               placeholder: AssetImage('assets/img/no-image.jpg'),
               height: 150.0,
               width: 100.0,
@@ -159,7 +159,7 @@ class DetalleArtistaScreen extends StatelessWidget {
             ),
           ),
           Text(
-            actor.name,
+            album.nombreAlbum,
             overflow: TextOverflow.ellipsis,
           )
         ],
@@ -167,6 +167,6 @@ class DetalleArtistaScreen extends StatelessWidget {
     );
 
   }
-  */
+  
 
 }

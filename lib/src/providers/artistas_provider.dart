@@ -1,6 +1,7 @@
 import 'package:artmus_2506632017/src/data/arreglos_data.dart';
+import 'package:artmus_2506632017/src/data/arreglos_data_albums.dart';
+import 'package:artmus_2506632017/src/models/album_model.dart';
 import 'package:artmus_2506632017/src/models/artista_model.dart';
-//import 'package:artmus_2506632017/src/models/actores_model.dart';
 
 class ArtistasProvider{
 
@@ -9,6 +10,7 @@ class ArtistasProvider{
 
   final List<Artista> _artistas = [];
   ArreglosData arreglosData = ArreglosData();
+  ArreglosDataAlbums arreglosDataAlbums = ArreglosDataAlbums();
 
   List<Artista> _procesarRespuesta(){
 
@@ -38,7 +40,7 @@ class ArtistasProvider{
    Future<List<Artista>> buscarArtista(String query) async {
     List<Artista> artistasEncontrados = [];
      
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < arreglosData.estadosArtistas.length; i++) {
       Artista artista = Artista(
         estado: arreglosData.estadosArtistas[i],
         imagenPortrait: arreglosData.rutasImagenesPortrait[i],
@@ -58,5 +60,23 @@ class ArtistasProvider{
       : artistasEncontrados.where((p) => p.nombre.toLowerCase().contains(query.toLowerCase())).toList();
 
     return artistasEncontrados;
+  }
+
+  Future<List<Album>> getAlbums(int idArtista) async {
+
+    List<Album> albumsPorArtista = [];
+
+    if(idArtista >= 0){
+      for (var i = 0; i < arreglosDataAlbums.nombresAlbums.length; i++) {
+        Album album = Album(
+          nombreAlbum: arreglosDataAlbums.nombresAlbums[i],
+          imagenAlbum: arreglosDataAlbums.rutasImagenesAlbums[i],
+          id: i+1,
+        );
+        albumsPorArtista.add(album);
+      }
+    }
+
+    return albumsPorArtista;
   }
 }
