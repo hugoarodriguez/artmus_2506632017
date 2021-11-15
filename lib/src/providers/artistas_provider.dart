@@ -62,13 +62,15 @@ class ArtistasProvider{
     return artistasEncontrados;
   }
 
-  Future<List<Album>> getAlbums(int idArtista) async {
+  Future<List<Album>> getAlbums(int idArtista, String nombreArtista, String imagenArtista) async {
 
     List<Album> albumsPorArtista = [];
 
     if(idArtista >= 0){
       for (var i = 0; i < arreglosDataAlbums.nombresAlbums.length; i++) {
         Album album = Album(
+          nombreArtista: nombreArtista,
+          imagenArtista: imagenArtista,
           nombreAlbum: arreglosDataAlbums.nombresAlbums[i],
           imagenAlbum: arreglosDataAlbums.rutasImagenesAlbums[i],
           id: i+1,

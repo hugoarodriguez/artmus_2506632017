@@ -19,19 +19,25 @@ class Album {
 
   String uniqueId = "0";//Propiedad inventada para diferenciar ID para uso del Hero Animation
 
+  String nombreArtista = 'Nombre';
+  String imagenArtista = 'ruta';
   String nombreAlbum = 'Nombre';
   String imagenAlbum = 'ruta';
   int id = 0;
 
   Album({
+    required this.nombreArtista,
+    required this.imagenArtista,
     required this.nombreAlbum,
     required this.imagenAlbum,
     required this.id,
   });
 
   Album.fromJsonMap(Map<String, dynamic> json){
-    nombreAlbum             = json["estado"] ?? '';
-    imagenAlbum      = json["imagenPortrait"] ?? '';
+    nombreArtista             = json["nombreArtista"] ?? '';
+    imagenArtista      = json["imagenArtista"] ?? '';
+    nombreAlbum             = json["nombreAlbum"] ?? '';
+    imagenAlbum      = json["imagenAlbum"] ?? '';
     id                = json["id"] ?? 0;
   }
 

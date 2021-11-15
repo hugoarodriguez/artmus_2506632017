@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:artmus_2506632017/src/models/artista_model.dart';
 import 'package:artmus_2506632017/src/providers/artistas_provider.dart';
 
 class DetalleArtistaScreen extends StatelessWidget {  
@@ -116,10 +115,10 @@ class DetalleArtistaScreen extends StatelessWidget {
     final artistasProvider = ArtistasProvider();
 
     return FutureBuilder(
-      future: artistasProvider.getAlbums(artista.id),
+      future: artistasProvider.getAlbums(artista.id, artista.nombre, artista.getBackgroundImg()),
       builder: (context, AsyncSnapshot<List> snapshot) {
         if(snapshot.hasData){
-          return _crearAlbumsPageView(snapshot.data);
+          return _crearAlbumsPageView(context, snapshot.data);
         }else{
           return Center(child: CircularProgressIndicator());
         }
@@ -127,7 +126,7 @@ class DetalleArtistaScreen extends StatelessWidget {
     );
   }
 
-  Widget _crearAlbumsPageView(albums){
+  Widget _crearAlbumsPageView(BuildContext context, albums){
 
     return SizedBox(
       height: 200.0,
@@ -138,24 +137,27 @@ class DetalleArtistaScreen extends StatelessWidget {
           initialPage: 1
         ),
         itemCount: albums.length,
-        itemBuilder: (context, i) => _albumTarjeta(albums[i]),
+        itemBuilder: (context, i) => _albumTarjeta(context, albums[i]),
       )
     ); 
   }
 
-  Widget _albumTarjeta(album){
+  Widget _albumTarjeta(BuildContext context, album){
     
     return Container(
       child: Column(
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
-            child: FadeInImage(
-              image: AssetImage(album.getPosterImg()),
-              placeholder: AssetImage('assets/img/no-image.jpg'),
-              height: 150.0,
-              width: 100.0,
-              fit: BoxFit.cover,
+            child: GestureDetector(
+              child: FadeInImage(
+                image: AssetImage(album.getPosterImg()),
+                placeholder: AssetImage('assets/img/no-image.jpg'),
+                height: 150.0,
+                width: 100.0,
+                fit: BoxFit.cover,
+              ),
+              onTap: () => Navigator.pushNamed(context, 'detalleAlbum', arguments: album),
             ),
           ),
           Text(
