@@ -56,6 +56,8 @@ class DetalleAlbumScreen extends StatelessWidget {
 
   Widget _posterTitulo(BuildContext context, album){
 
+    album.uniqueId = '${album.id}-posteralbum';
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
@@ -106,7 +108,7 @@ class DetalleAlbumScreen extends StatelessWidget {
   Widget _crearCancionesPageView(BuildContext context, canciones){
 
     return SizedBox(
-      height: 200.0,
+      height: 300.0,
       child: PageView.builder(
         pageSnapping: false,
         controller: PageController(

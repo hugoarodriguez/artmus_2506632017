@@ -129,7 +129,7 @@ class DetalleArtistaScreen extends StatelessWidget {
   Widget _crearAlbumsPageView(BuildContext context, albums){
 
     return SizedBox(
-      height: 200.0,
+      height: 300.0,
       child: PageView.builder(
         pageSnapping: false,
         controller: PageController(
@@ -143,28 +143,33 @@ class DetalleArtistaScreen extends StatelessWidget {
   }
 
   Widget _albumTarjeta(BuildContext context, album){
-    
-    return Container(
-      child: Column(
-        children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
-            child: GestureDetector(
-              child: FadeInImage(
-                image: AssetImage(album.getPosterImg()),
-                placeholder: AssetImage('assets/img/no-image.jpg'),
-                height: 150.0,
-                width: 100.0,
-                fit: BoxFit.cover,
+
+    album.uniqueId = '${album.id}-posteralbum';
+
+    return Hero(
+      tag: album.uniqueId,
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: GestureDetector(
+                child: FadeInImage(
+                  image: AssetImage(album.getPosterImg()),
+                  placeholder: AssetImage('assets/img/no-image.jpg'),
+                  height: 150.0,
+                  width: 100.0,
+                  fit: BoxFit.cover,
+                ),
+                onTap: () => Navigator.pushNamed(context, 'detalleAlbum', arguments: album),
               ),
-              onTap: () => Navigator.pushNamed(context, 'detalleAlbum', arguments: album),
             ),
-          ),
-          Text(
-            album.nombreAlbum,
-            overflow: TextOverflow.ellipsis,
-          )
-        ],
+            Text(
+              album.nombreAlbum,
+              overflow: TextOverflow.ellipsis,
+            )
+          ],
+        ),
       ),
     );
 
