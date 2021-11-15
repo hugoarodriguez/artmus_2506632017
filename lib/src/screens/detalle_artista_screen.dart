@@ -86,12 +86,12 @@ class DetalleArtistaScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(artista.nombre, style: Theme.of(context).textTheme.headline6, overflow: TextOverflow.ellipsis, ),
-                Text(artista.generoMusical, style: Theme.of(context).textTheme.subtitle1, overflow: TextOverflow.ellipsis),
+                Text(artista.nombre, style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.white), overflow: TextOverflow.ellipsis, ),
+                Text(artista.generoMusical, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white), overflow: TextOverflow.ellipsis),
                 Row(
                   children: <Widget>[
-                    Icon(Icons.check_circle_outline_rounded),
-                    Text(artista.estado, style: Theme.of(context).textTheme.subtitle1)
+                    Icon(Icons.check_circle_outline_rounded, color: Colors.white),
+                    Text(artista.estado, style: Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.white))
                   ],
                 )
               ],
@@ -110,12 +110,11 @@ class DetalleArtistaScreen extends StatelessWidget {
       child: Text(
         artista.descripcionBiografica,
         textAlign: TextAlign.justify,
+        style: TextStyle(color: Colors.white),
       ),
     );
 
   }
-
-  
 
   Widget _crearDiscografia(artista){
 
@@ -171,9 +170,11 @@ class DetalleArtistaScreen extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(context, 'detalleAlbum', arguments: album),
               ),
             ),
+            SizedBox(height: 10.0,),
             Text(
               album.nombreAlbum,
               overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.white),
             )
           ],
         ),

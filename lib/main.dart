@@ -13,6 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.light,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.pinkAccent[200],),
       debugShowCheckedModeBanner: false,
       title: 'ArtMus',
       initialRoute: '/',

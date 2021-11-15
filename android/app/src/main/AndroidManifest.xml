@@ -2,7 +2,7 @@
     package="com.example.artmus_2506632017">
    <application
         android:label="artmus_2506632017"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/music_note">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

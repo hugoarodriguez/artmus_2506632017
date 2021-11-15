@@ -20,6 +20,7 @@ class DetalleAlbumScreen extends StatelessWidget {
                 [
                   SizedBox(height: 10.0),
                   _posterTitulo(context, album),
+                  SizedBox(height: 30.0),
                   _crearListadoCanciones(album)
                 ]
               )
@@ -79,7 +80,7 @@ class DetalleAlbumScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(album.nombreAlbum, style: Theme.of(context).textTheme.headline6, overflow: TextOverflow.ellipsis, ),
+                Text(album.nombreAlbum, style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.white), overflow: TextOverflow.ellipsis, ),
               ],
             )
           )
@@ -139,9 +140,11 @@ class DetalleAlbumScreen extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(context, 'detalle', arguments: cancion),
               ),
             ),
+            SizedBox(height: 10.0,),
             Text(
               cancion.nombreCancion,
               overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.white),
             )
           ],
         ),
