@@ -47,7 +47,7 @@ class CardSwiper extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5.0,),
-                  Text(artistas[index].nombre, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                  Text(artistas[index].nombre, style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),),
                 ],
               ),
             );

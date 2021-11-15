@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             SizedBox(height: 15.0,),
-            Text('Toca una tarjeta para ver más...', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),),
+            Text('Toca una tarjeta para ver más...', style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),),
             _swiperTarjetas(),
           ],
         ),
