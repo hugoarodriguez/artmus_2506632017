@@ -29,6 +29,13 @@ class DetalleArtistaScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.indigoAccent,
+        child: Icon(Icons.queue),
+        onPressed: (){
+          //Redirigir a formulario de solicitud de canción
+        },
+      ),
     );
   }
 
