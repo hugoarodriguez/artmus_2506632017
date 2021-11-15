@@ -5,9 +5,6 @@ import 'package:artmus_2506632017/src/models/artista_model.dart';
 
 class ArtistasProvider{
 
-  int _popularesPage = 0;
-  bool _cargando = false;
-
   final List<Artista> _artistas = [];
   ArreglosData arreglosData = ArreglosData();
   ArreglosDataAlbums arreglosDataAlbums = ArreglosDataAlbums();

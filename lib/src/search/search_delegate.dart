@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import 'package:artmus_2506632017/src/models/artista_model.dart';
@@ -81,13 +83,13 @@ class DataSearch extends SearchDelegate{
 
               return ListTile(
                 leading: FadeInImage(
-                  image: AssetImage(artista.getPosterImg()),
+                  image: AssetImage(artista.getBackgroundImg()),
                   placeholder: const AssetImage('assets/img/no-image.jpg'),
                   width: 50.0,
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                 ),
-                title: Text(artista.nombre),
-                subtitle: Text(artista.paisOrigen),
+                title: Text(artista.nombre, style: TextStyle(color: Colors.white),),
+                subtitle: Text(artista.paisOrigen, style: TextStyle(color: Colors.white),),
                 onTap: (){
                   //close(context, null);//Cerramos el búscador
                   artista.uniqueId = '';//Vaciamos el uniqueId ya que no haremos el efecto Hero

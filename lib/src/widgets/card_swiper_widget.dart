@@ -1,8 +1,7 @@
-// ignore_for_file: import_of_legacy_library_into_null_safe, must_be_immutable, use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: import_of_legacy_library_into_null_safe, must_be_immutable, use_key_in_widget_constructors, prefer_const_constructors, prefer_typing_uninitialized_variables
 
 import 'package:artmus_2506632017/src/providers/artistas_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:artmus_2506632017/src/models/artista_model.dart';
 
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 

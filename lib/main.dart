@@ -1,6 +1,6 @@
-// ignore_for_file: avoid_unnecessary_containers, use_key_in_widget_constructors
+// ignore_for_file: avoid_unnecessary_containers, use_key_in_widget_constructors, prefer_const_constructors
 
-import 'package:artmus_2506632017/src/screens/reproducir_cancion_screen.dart';
+import 'package:artmus_2506632017/src/screens/solicitar_cancion_screen.dart';
 import 'package:artmus_2506632017/src/widgets/staggered_animator.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         'detalle'       : (BuildContext context) => DetalleArtistaScreen(),
         'detalleAlbum'       : (BuildContext context) => DetalleAlbumScreen(),
         'reproducir'       : (BuildContext context) => StaggeredAnimator(),
+        'solicitar'       : (BuildContext context) => SolicitarCancionScreen(),
       },
     );
   }
