@@ -157,7 +157,7 @@ class _DetalleAlbumScreenState extends State<DetalleAlbumScreen> {
                   width: 100.0,
                   fit: BoxFit.cover,
                 ),
-                onTap: () => Navigator.pushNamed(context, 'detalle', arguments: cancion),
+                onTap: () => Navigator.pushNamed(context, 'reproducir', arguments: cancion),
               ),
             ),
             SizedBox(height: 10.0,),
