@@ -3,8 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:artmus_2506632017/src/providers/albums_provider.dart';
 
-class DetalleAlbumScreen extends StatelessWidget {  
+class DetalleAlbumScreen extends StatefulWidget {  
 
+  @override
+  State<DetalleAlbumScreen> createState() => _DetalleAlbumScreenState();
+}
+
+class _DetalleAlbumScreenState extends State<DetalleAlbumScreen> {
   @override
   Widget build(BuildContext context) {
 
@@ -55,6 +60,9 @@ class DetalleAlbumScreen extends StatelessWidget {
     );
   }
 
+  double originalHeight = 250;
+    double originaWidth = 150;
+  
   Widget _posterTitulo(BuildContext context, album){
 
     album.uniqueId = '${album.id}-posteralbum';
@@ -65,14 +73,26 @@ class DetalleAlbumScreen extends StatelessWidget {
         children: <Widget>[
           Hero(
             tag: album.uniqueId,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Image(
-                image: AssetImage(album.getPosterImg()),
-                height: 250.0,
-                width: 150.0,
-                fit: BoxFit.cover,
+            child: GestureDetector(
+              child: AnimatedContainer(
+                curve: Curves.easeOutQuart,
+                height: originalHeight,
+                width: originaWidth,
+                duration: Duration(milliseconds: 1000),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image(
+                    image: AssetImage(album.getPosterImg()),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
+              onTap: (){
+                setState(() {
+                  originalHeight = originalHeight == 250.0 ? MediaQuery.of(context).size.height * 0.40 : 250.0;
+                  originaWidth = originaWidth == 150.0 ? MediaQuery.of(context).size.width * 0.50 : 150.0;
+                });
+              },
             ),
           ),
           SizedBox(width: 20.0),
@@ -151,6 +171,4 @@ class DetalleAlbumScreen extends StatelessWidget {
     );
 
   }
-  
-
 }
